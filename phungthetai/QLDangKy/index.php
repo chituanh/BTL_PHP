@@ -46,19 +46,19 @@ try {
                 break;
 
             case 'them':
-                require_once 'screens/add_may_tinh.php';
+                require_once 'screens/add_dang_ky.php';
                 break;
 
             case 'sua':
-                require_once 'screens/repair_may_tinh.php';
+                require_once 'screens/repair_dang_ky.php';
                 break;
 
             case 'xoa':
-                require_once 'screens/del_may_tinh.php';
+                require_once 'screens/del_dang_ky.php';
                 break;
 
             default:
-                require_once 'screens/list_may_tinh.php';
+                require_once 'screens/list_dang_ky.php';
                 break;
         }
     } else {
