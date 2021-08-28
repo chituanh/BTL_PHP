@@ -20,7 +20,7 @@ if (isset($_POST['sbm'])) {
         $sql = "INSERT INTO `lichtruc` VALUES (NULL, $idPhongMay, $id, " . " '" . "$timeStart" . "'" . ","  . " '" . "$timeEnd"  . "' )";
         echo $sql;
         $query = mysqli_query($connect, $sql);
-        header('location: index.php');
+        header('location:  index.php');
     } catch (Exception $err) {
     }
 }

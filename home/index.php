@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+require_once '../config/db.php';
+
+$sqlGV = "SELECT * FROM giaovien";
+$queryGV = mysqli_query($connect, $sqlGV);
+$countGV = $queryGV->num_rows;
+
+
+$sqlMH = "SELECT * FROM monhoc";
+$queryMH = mysqli_query($connect, $sqlMH);
+$countMH = $queryMH->num_rows;
+
+
+
+?>
+
+
 <head>
 
     <meta charset="utf-8">
@@ -124,12 +141,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -346,8 +358,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Tổng Giáo Viên</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $countGV  ?> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -364,8 +376,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                                Tổng Môn Học</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $countMH ?> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -381,7 +393,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tỉ Lệ Phòng Trốngs
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -409,7 +421,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
+                                                Số Lượng Môn Học Hôm Nay</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                         </div>
                                         <div class="col-auto">
