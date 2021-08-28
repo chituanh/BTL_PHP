@@ -2,7 +2,7 @@
 $sql_teacher = "SELECT * FROM giaovien";
 $query_teacher = mysqli_query($connect, $sql_teacher);
 
-$sql_PM = "SELECT * FROM phongmay WHERE tinhTrang = 'còn trống'";
+$sql_PM = "SELECT * FROM phongmay WHERE tinhTrang = 'hoạt động'";
 $query_PM = mysqli_query($connect, $sql_PM);
 
 if (isset($_POST['sbm'])) {
@@ -20,7 +20,7 @@ if (isset($_POST['sbm'])) {
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h2>Thêm giáo viên</h2>
+            <h2>Thêm lịch trực</h2>
         </div>
 
         <div class="card-body">
@@ -37,12 +37,12 @@ if (isset($_POST['sbm'])) {
 
                 <div class="form-group">
                     <label>Thời gian bắt đầu</label> <br>
-                    <input type="date" name="timeStart">
+                    <input type="datetime-local" name="timeStart">
                 </div>
 
                 <div class="form-group">
                     <label>Thời gian kết thúc</label><br>
-                    <input type="date" name="timeEnd">
+                    <input type="datetime-local" name="timeEnd">
                 </div>
 
 

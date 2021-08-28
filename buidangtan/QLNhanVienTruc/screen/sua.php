@@ -4,7 +4,7 @@ $id = $_GET['id'];
 $sql_teacher = "SELECT * FROM giaovien";
 $query_teacher = mysqli_query($connect, $sql_teacher);
 
-$sql_PM = "SELECT * FROM phongmay";
+$sql_PM = "SELECT * FROM phongmay WHERE tinhTrang = 'hoạt động'";
 $query_PM = mysqli_query($connect, $sql_PM);
 
 $sql_up = "SELECT * FROM lichtruc
@@ -48,12 +48,12 @@ if (isset($_POST['sbm'])) {
                 
 				<div class="form-group">
                     <label>Thời gian bắt đầu</label>
-                  <input type="date" name="timeStart" class="form-control" value="<?php echo $row_up['timeStart']; ?>">
+                  <input readonly type="datetime" name="timeStart" class="form-control" value="<?php echo $row_up['timeStart']; ?>">
                 </div>
 				
 				<div class="form-group">
                     <label>Thời gian kết thúc</label>
-                  <input  type="date" name="timeEnd" class="form-control" value="<?php echo $row_up['timeEnd']; ?>">
+                  <input readonly  type="datetime" name="timeEnd" class="form-control" value="<?php echo $row_up['timeEnd']; ?>">
                 </div>
 
                 <div class="form-group">

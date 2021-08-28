@@ -1,12 +1,12 @@
 <?php
 try{
-    $sqlBase = "SELECT lichtruc.idGiaoVien, nameGiaoVien, phoneGiaoVien, email, SUM(DATEDIFF(timeEnd, timeStart)) AS cong  				FROM lichtruc
+    $sqlBase = "SELECT lichtruc.idGiaoVien, nameGiaoVien, phoneGiaoVien, email, SUM(HOUR(TIMEDIFF(timeEnd, timeStart))*60 + MINUTE(TIMEDIFF(timeEnd, timeStart))  ) AS cong  				FROM lichtruc
 				INNER JOIN giaovien ON lichtruc.idGiaoVien = giaovien.idGiaoVien
 				GROUP BY idGiaoVien";
 	
 	if (isset($_POST['sbm']) && !empty($_POST['search'])) {
     $search = $_POST['search'];
-    $sql =  "SELECT lichtruc.idGiaoVien, nameGiaoVien, phoneGiaoVien, email, SUM(DATEDIFF(timeEnd, timeStart)) AS cong  				FROM lichtruc
+    $sql =  "SELECT lichtruc.idGiaoVien, nameGiaoVien, phoneGiaoVien, email, SUM(HOUR(TIMEDIFF(timeEnd, timeStart))*60 + MINUTE(TIMEDIFF(timeEnd, timeStart))  ) AS cong  	 				FROM lichtruc
 				INNER JOIN giaovien ON lichtruc.idGiaoVien = giaovien.idGiaoVien
 				WHERE nameGiaoVien LIKE '%$search%'";
     $query = mysqli_query($connect, $sql);
@@ -80,7 +80,7 @@ try{
                             <td> <?php echo $row['nameGiaoVien']; ?></td>
                             <td><?php echo $row['phoneGiaoVien']; ?></td>
                             <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['cong']; ?></td>
+                            <td><?php echo round( ($row['cong']/8/60), 2); ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
