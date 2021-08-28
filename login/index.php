@@ -45,7 +45,8 @@ if (isset($_POST['submit'])) {
             $_SESSION['idUser'] = $row['idGiaoVien'];
             $_SESSION['isDangNhap'] = true;
             $isError = false;
-            header('location: ../phungthetai/QLDangKy/index.php');
+
+            header('location: ../home/index.php');
         } else {
             $isError = true;
         }
