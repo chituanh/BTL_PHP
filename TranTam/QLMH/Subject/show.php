@@ -43,7 +43,7 @@ if (isset($_POST['all_subject'])) {
                         <th>Số tiết</th>
                         <th>Yêu cầu phòng máy</th>
                         <th>Giáo viên</th>
-                        <th width="12%">Hành động</th>
+                        <th width="16%">Hành động</th>
                     </tr>
                 </thead>
 

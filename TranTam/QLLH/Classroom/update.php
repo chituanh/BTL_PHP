@@ -12,7 +12,9 @@ if (isset($_POST['sbm'])) {
 
     $sql = "UPDATE phongmay SET namePhongMay  = '$classroomName', tinhTrang = '$status', soLuongMay = '$numberComputer' WHERE idPhongMay = $id";
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">

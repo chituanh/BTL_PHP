@@ -1,16 +1,17 @@
 <?php
-session_start();
+// session_start();
 
 $sqlPhongMay = "SELECT * FROM phongmay";
 $queryPhongMay = mysqli_query($connect, $sqlPhongMay);
 
-$sql_up = "SELECT * FROM lichtruc WHERE idLichTruc = $id";
-$query_up = mysqli_query($connect, $sql_up);
-$row_up = mysqli_fetch_assoc($query_up);
-
 
 
 if (isset($_POST['sbm'])) {
+
+    $sql_up = "SELECT * FROM lichtruc WHERE idLichTruc = $id";
+    $query_up = mysqli_query($connect, $sql_up);
+    $row_up = mysqli_fetch_assoc($query_up);
+
     $idPhongMay = $_POST['sePhongMay'];
     $timeStart = $_POST['txtDateStart'];
     $timeEnd = $_POST['txtDateEnd'];
@@ -20,7 +21,9 @@ if (isset($_POST['sbm'])) {
         $sql = "INSERT INTO `lichtruc` VALUES (NULL, $idPhongMay, $id, " . " '" . "$timeStart" . "'" . ","  . " '" . "$timeEnd"  . "' )";
         echo $sql;
         $query = mysqli_query($connect, $sql);
-        header('location:  index.php');
+        echo "<script>";
+        echo "location.href='index.php'";
+        echo "</script>";
     } catch (Exception $err) {
     }
 }

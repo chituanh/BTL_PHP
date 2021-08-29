@@ -18,7 +18,9 @@ if (isset($_POST['sbm'])) {
 
     $sql = "UPDATE monhoc SET nameMonHoc  = '$subjectName', ngayBatDau = '$startDate', ngayKetThuc = '$finishDate', soTiet = $numberLesson, yeuCauPhongMay = '$requireComputer', idGiaoVien = $idTeacher WHERE idMonHoc = $id";
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">
@@ -67,3 +69,6 @@ if (isset($_POST['sbm'])) {
         </div>
     </div>
 </div>
+
+
+

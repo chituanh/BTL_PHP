@@ -40,7 +40,7 @@ if (isset($_POST['all_class'])) {
                         <th>Tên phòng học</th>
                         <th>Tình trạng</th>
                         <th>Số lượng máy</th>
-                        <th width="12%">Hành động</th>
+                        <th width="16%">Hành động</th>
                     </tr>
                 </thead>
 

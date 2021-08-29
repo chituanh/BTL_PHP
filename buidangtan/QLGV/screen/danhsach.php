@@ -1,24 +1,24 @@
 <?php
-try{
+try {
     $sqlBase = "SELECT * FROM giaovien";
-	if (isset($_POST['sbm']) && !empty($_POST['search'])) {
-    $search = $_POST['search'];
-    $sql = "SELECT * FROM giaovien WHERE nameGiaoVien LIKE '%$search%'";
-    $query = mysqli_query($connect, $sql);
-    $total_subject = mysqli_num_rows($query);
-	} else {
-    	$sql = $sqlBase;
-		$query = mysqli_query($connect, $sql);
-	}
-	if (isset($_POST['sort'])) {
+    if (isset($_POST['sbm']) && !empty($_POST['search'])) {
+        $search = $_POST['search'];
+        $sql = "SELECT * FROM giaovien WHERE nameGiaoVien LIKE '%$search%'";
+        $query = mysqli_query($connect, $sql);
+        $total_subject = mysqli_num_rows($query);
+    } else {
+        $sql = $sqlBase;
+        $query = mysqli_query($connect, $sql);
+    }
+    if (isset($_POST['sort'])) {
         $sql = $sqlBase + 'ORDER BY nameGiaoVien DESC';
         $query = mysqli_query($connect, $sql);
     }
 
-	if (isset($_POST['all_subject'])) {
-		unset($_POST['sbm']);
-	}	
-}catch (Exception $err) {
+    if (isset($_POST['all_subject'])) {
+        unset($_POST['sbm']);
+    }
+} catch (Exception $err) {
     echo 'lỗi rồi';
 }
 
@@ -43,7 +43,7 @@ try{
                 }
             }
             ?>
-			<div class="card-footer d-flex justify-content-between">
+            <div class="card-footer d-flex justify-content-between">
                 <a href="index.php?page_layout=them" class="btn btn-primary">
                     Thêm mới
                 </a>
@@ -55,7 +55,7 @@ try{
                     </form>
                 <?php } ?>
             </div>
-			
+
             <table class="table bordered">
                 <thead class="thead-dark">
                     <tr>
@@ -65,7 +65,7 @@ try{
                         <th>Email</th>
                         <th>Mật khẩu</th>
                         <th>Mã chức vụ</th>
-                        <th width="12%">Hành động</th>
+                        <th width="16%">Hành động</th>
                     </tr>
                 </thead>
 
@@ -90,7 +90,7 @@ try{
             </table>
         </div>
 
-       
+
     </div>
 </div>
 

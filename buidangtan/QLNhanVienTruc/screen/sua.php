@@ -24,7 +24,9 @@ if (isset($_POST['sbm'])) {
 
     $sql = "UPDATE lichtruc SET idGiaoVien  = '$idGiaoVien', idPhongMay = '$idPhongMay', timeStart = '$timeStart', timeEnd = '$timeEnd' WHERE idLichTruc = $id";
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">

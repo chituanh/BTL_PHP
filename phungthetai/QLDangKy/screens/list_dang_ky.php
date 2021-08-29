@@ -1,6 +1,6 @@
 <?php
 try {
-    session_start();
+    // session_start();
     // require_once '../controller/list_dang_ky_controller.php';
     function rows($query)
     {
@@ -66,8 +66,8 @@ try {
     }
 
 
-
-    $idGiaoVien = $_SESSION['idUser'];
+    if (isset($_SESSION['idUser']))
+        $idGiaoVien = $_SESSION['idUser'];
     if (isset($_POST['txtDateStart']))
         $dateStart = $_POST['txtDateStart'];
     else

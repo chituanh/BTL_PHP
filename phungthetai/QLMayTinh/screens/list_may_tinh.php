@@ -65,7 +65,7 @@ try {
                         <th>Phần Cứng</th>
                         <th>Tình Trạng</th>
 
-                        <th width="12%">Hành động</th>
+                        <th width="16%">Hành động</th>
                     </tr>
                 </thead>
 

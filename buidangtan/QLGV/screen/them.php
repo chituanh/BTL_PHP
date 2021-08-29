@@ -11,7 +11,9 @@ if (isset($_POST['sbm'])) {
     $sql = "INSERT INTO giaovien(nameGiaoVien, phoneGiaoVien, email, matKhau, idChucVu) VALUES('$nameGV', '$phoneGV', '$email', '1234', $idCV)";
 
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">

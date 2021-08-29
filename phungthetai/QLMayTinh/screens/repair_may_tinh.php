@@ -20,7 +20,9 @@ if (isset($_POST['sbm'])) {
     try {
         $sql = "UPDATE `maytinh` SET `tinhTrang`= '$tinhTrang',`cauHinhMay`= '$cauHinhMay',`phanCung`='$phanCung',`idPhongMay`= $idPhongMay,`nameMayTinh`= '$nameMayTinh' WHERE idMayTinh = $id";
         $query = mysqli_query($connect, $sql);
-        header('location: index.php');
+        echo "<script>";
+        echo "location.href='index.php'";
+        echo "</script>";
     } catch (Exception $err) {
     }
 }

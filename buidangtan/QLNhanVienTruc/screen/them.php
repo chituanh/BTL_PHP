@@ -14,7 +14,9 @@ if (isset($_POST['sbm'])) {
     $sql = "INSERT INTO lichtruc(idGiaoVien, timeStart, timeEnd,idPhongMay) VALUES('$idGiaoVien', '$timeStart', '$timeEnd', $idPhongMay)";
 
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">

@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 $id = $_GET['id'];
 
 $sqlPhongMay = "SELECT * FROM phongmay";
@@ -19,7 +19,9 @@ if (isset($_POST['sbm'])) {
     try {
         $sql = "UPDATE `lichtruc` SET `idPhongMay`= $idPhongMay, `timeStart` =" . " '" . "$timeStart" . "'" . ", `timeEnd` =" . " '" . "$timeEnd"  . "' " . "WHERE idLichTruc = $id";
         $query = mysqli_query($connect, $sql);
-        header('location: index.php');
+        echo "<script>";
+        echo "location.href='index.php'";
+        echo "</script>";
     } catch (Exception $err) {
     }
 }

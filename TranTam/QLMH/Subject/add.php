@@ -1,7 +1,6 @@
 <?php
 $sql_teacher = "SELECT * FROM giaovien";
 $query_teacher = mysqli_query($connect, $sql_teacher);
-
 if (isset($_POST['sbm'])) {
     $subjectName = $_POST['subjectName'];
     $startDate = $_POST['startDate'];
@@ -9,11 +8,12 @@ if (isset($_POST['sbm'])) {
     $numberLesson = $_POST['numberLesson'];
     $requireComputer = $_POST['requireComputer'];
     $idTeacher = $_POST['idGiaoVien'];
-
     $sql = "INSERT INTO monhoc(nameMonHoc, ngayBatDau, ngayKetThuc, soTiet, yeuCauPhongMay, idGiaoVien) VALUES('$subjectName', '$startDate', '$finishDate', $numberLesson, '$requireComputer', $idTeacher)";
-
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    // header('location:index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">

@@ -86,7 +86,7 @@ try{
                         <th>Thời gian bắt đầu</th>
                         <th>Thời gian kết thúc</th>
 						<th>Phòng máy</th>
-                        <th width="12%">Hành động</th>
+                        <th width="16%">Hành động</th>
                     </tr>
                 </thead>
 

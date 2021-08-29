@@ -31,9 +31,12 @@
 <?php
 session_start();
 $isError = false;
-$username = $_POST['username'];
-$password = $_POST['password'];
+if (isset($_POST['username']))
+    $username = $_POST['username'];
+if (isset($_POST['password']))
+    $password = $_POST['password'];
 if (isset($_POST['submit'])) {
+
     require_once '../config/db.php';
     try {
         $sql = "SELECT * FROM giaovien WHERE email = '" . $username . "' AND matKhau = '" . $password . "'";
@@ -67,16 +70,16 @@ if (isset($_POST['submit'])) {
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" value="<?php echo $username ?>" class="form-control">
+                                <input type="text" name="username" id="username" value="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
-                                <input type="text" name="password" id="password" value="<?php echo $password ?>" class="form-control">
+                                <input type="password" name="password" id="password" value="" class="form-control">
                             </div>
-                            <div class="form-group justify-content-center align-items-center">
+                            <div class="form-group justify-content-center align-items-center" style="text-align: center;">
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                             </div>
-                            <div class="form-group justify-content-center align-items-center">
+                            <div class="form-group justify-content-center align-items-center" style="text-align: center;">
                                 <?php if ($isError == true) { ?> <table>Tài khoản hoặc mật khẩu không đúng</table> <?php } ?>
                             </div>
                         </form>

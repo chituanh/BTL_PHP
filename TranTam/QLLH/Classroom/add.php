@@ -8,7 +8,9 @@ if (isset($_POST['sbm'])) {
 
     $sql = "INSERT INTO phongmay(namePhongMay, tinhTrang, soLuongMay) VALUES('$classroomName', '$status', $numberComputer)";
     $query = mysqli_query($connect, $sql);
-    header('location: index.php');
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">

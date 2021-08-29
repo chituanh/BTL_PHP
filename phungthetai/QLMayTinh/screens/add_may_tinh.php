@@ -2,19 +2,22 @@
 
 $sqlPhongMay = "SELECT * FROM phongmay";
 $queryPhongMay = mysqli_query($connect, $sqlPhongMay);
-$nameMayTinh = $_POST['txtNameMayTinh'];
-$cauHinhMay = $_POST['txtCauHinhMay'];
-$phanCung = $_POST['txtPhanCung'];
-$idPhongMay = $_POST['sePhongMay'];
-$tinhTrang = $_POST['seTinhTrang'];
+
 
 if (isset($_POST['sbm'])) {
+    $nameMayTinh = $_POST['txtNameMayTinh'];
+    $cauHinhMay = $_POST['txtCauHinhMay'];
+    $phanCung = $_POST['txtPhanCung'];
+    $idPhongMay = $_POST['sePhongMay'];
+    $tinhTrang = $_POST['seTinhTrang'];
     if (trim($nameMayTinh, ' ') == '' || trim($cauHinhMay, ' ') == '' || trim($phanCung) == '') {
     } else {
         $sql = "INSERT INTO `maytinh`(`idMayTinh`, `tinhTrang`, `cauHinhMay`, `phanCung`, `idPhongMay`, `nameMayTinh`) VALUES (NULL , '$tinhTrang' ,  '$cauHinhMay', '$phanCung' , $idPhongMay ,'$nameMayTinh')";
         $query = mysqli_query($connect, $sql);
-        header('location: index.php');
     }
+    echo "<script>";
+    echo "location.href='index.php'";
+    echo "</script>";
 }
 ?>
 <div class="container-fluid">
