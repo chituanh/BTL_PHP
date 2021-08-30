@@ -37,7 +37,7 @@ if (isset($_POST['password']))
     $password = $_POST['password'];
 if (isset($_POST['submit'])) {
 
-    require_once '../config/db.php';
+    require_once './config/db.php';
     try {
         $sql = "SELECT * FROM giaovien WHERE email = '" . $username . "' AND matKhau = '" . $password . "'";
         $query = mysqli_query($connect, $sql);
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['isDangNhap'] = true;
             $isError = false;
 
-            header('location: ../home/index.php');
+            header('location: ./home/index.php');
         } else {
             $isError = true;
         }
