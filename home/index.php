@@ -470,7 +470,7 @@ $countMH = $queryMH->num_rows;
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Tình Trạng Máy Tính</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -485,22 +485,44 @@ $countMH = $queryMH->num_rows;
                                     </div>
                                 </div>
                                 <!-- Card Body -->
+                                <?php
+                                $sqlHoatDong = "SELECT * FROM maytinh WHERE tinhTrang = 'hoạt động'";
+                                $sqlAll = "SELECT * FROM maytinh";
+                                $sqlBaoTri = "SELECT * FROM maytinh WHERE tinhTrang = 'bảo trì'";
+
+                                $queryHoatDong = mysqli_query($connect, $sqlHoatDong);
+
+                                $queryBaoTri = mysqli_query($connect, $sqlBaoTri);
+
+                                $queryAll = mysqli_query($connect, $sqlAll);
+
+                                $all = $queryAll->num_rows;
+
+                                $baoTri = intval((($queryBaoTri->num_rows)  / $all) * 100);
+                                $hoatDong = intval((($queryHoatDong->num_rows)  / $all) * 100);
+                                $hong = 100 - $baoTri - $hoatDong;
+
+                                ?>
+
+
+
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fas fa-circle text-primary"></i> Hoạt Động
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <i class="fas fa-circle text-warning"></i> Bảo Trì
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle text-danger"></i> Hỏng
                                         </span>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -568,7 +590,44 @@ $countMH = $queryMH->num_rows;
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- <script src="js/demo/chart-pie-demo.php"></script> -->
+    <script>
+        // Set new default font family and font color to mimic Bootstrap's default styling
+        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#858796';
+        // Pie Chart Example
+        var ctx = document.getElementById("myPieChart");
+        console.log('cay');
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Hoạt Động", "Bảo Trì", "Hỏng"],
+                datasets: [{
+                    data: [<?php echo $hoatDong ?>, <?php echo $baoTri ?>, <?php echo $hong ?>],
+                    backgroundColor: ['#4e73df', '#ffb300', '#e53935'],
+                    hoverBackgroundColor: ['#2e59d9', '#ffd54f', '#ef9a9a'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 80,
+            },
+        });
+    </script>
 
 </body>
 
