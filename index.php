@@ -46,6 +46,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['password'] = $password;
             $row = mysqli_fetch_assoc($query);
             $_SESSION['idUser'] = $row['idGiaoVien'];
+            $_SESSION['name'] = $row['nameGiaoVien'];
             $_SESSION['isDangNhap'] = true;
             $isError = false;
 

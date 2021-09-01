@@ -3,7 +3,7 @@
 
 <?php
 require_once '../config/db.php';
-
+session_start();
 $sqlGV = "SELECT * FROM giaovien";
 $queryGV = mysqli_query($connect, $sqlGV);
 $countGV = $queryGV->num_rows;
@@ -309,7 +309,7 @@ $countMH = $queryMH->num_rows;
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Chi Tu Anh</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name'] ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->

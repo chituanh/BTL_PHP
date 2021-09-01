@@ -68,12 +68,14 @@ try {
 
     if (isset($_SESSION['idUser']))
         $idGiaoVien = $_SESSION['idUser'];
-    if (isset($_POST['txtDateStart']))
-        $dateStart = $_POST['txtDateStart'];
-    else
-        $dateStart = new DateTime('NOW');
+
+    $dateStart = new DateTime('NOW');
     $dateEnd = (new DateTime('NOW'))->add(new DateInterval('P20D'));
     $dateNow = new DateTime('NOW');
+    if (isset($_POST['reload'])) {
+        $dateStart = date_create_from_format('Y-m-d', $_POST['txtDateStart']);
+        $dateEnd = date_create_from_format('Y-m-d', $_POST['txtDateEnd']);
+    }
     $sql = "SELECT * FROM lichtruc";
     $query = mysqli_query($connect, $sql);
     $rows = rows($query);
@@ -101,24 +103,34 @@ try {
             ?>
             <tr>
                 <div class="card-footer d-flex justify-content-around">
-                    <button>
+
+                    <form>
                         <a href="index.php?page_layout=them" class="btn btn-primary">
                             Thêm lịch trực
                         </a>
-                    </button>
-                    <label>Thời gian bắt đầu</label>
-                    <div class="form-group">
+                    </form>
 
-                        <input type="date" name="txtDateStart" class="form-control" value="<?php echo $dateStart->format('Y-m-d'); ?>">
-                    </div>
-                    <label>Thời gian kết thúc</label>
-                    <div class="form-group">
+                    <form method="POST" class="d-flex align-items-center">
+                        <label class="p-2">Thời gian bắt đầu</label>
+                        <div class="form-group">
 
-                        <input type="date" name="txtDateEnd" class="form-control" value="<?php echo $dateEnd->format('Y-m-d'); ?>">
-                    </div>
-                    <button class="btn btn-primary">
-                        Lọc dữ liệu
-                    </button>
+                            <input type="date" name="txtDateStart" class="form-control" value="<?php echo $dateStart->format('Y-m-d'); ?>">
+                        </div>
+                        <label class="p-2">Thời gian kết thúc</label>
+                        <div class="form-group">
+
+                            <input type="date" name="txtDateEnd" class="form-control" value="<?php echo $dateEnd->format('Y-m-d'); ?>">
+                        </div>
+                        <div class="button pb-3 px-2">
+                            <button class="btn btn-primary" name="reload" type="submit">
+                                Lọc dữ liệu
+                            </button>
+                        </div>
+
+                    </form>
+
+
+
                 </div>
             </tr>
 
